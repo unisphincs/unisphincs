@@ -36,7 +36,7 @@ export default function Page() {
             <a className="btn btn-primary" href="#token">
               buy $unisphincs
             </a>
-            <a className="btn" href="https://github.com/402proto/unisphincs">
+            <a className="btn" href="https://github.com/unisphincs/unisphincs">
               github
             </a>
             <a className="btn" href="https://github.com/vbuterin/sphincsminus">
@@ -184,7 +184,7 @@ export default function Page() {
             <p>
               if vitalik buterin or any of the original authors request
               changes, we comply immediately. see{" "}
-              <a href="https://github.com/402proto/unisphincs/blob/main/ATTRIBUTION.md">
+              <a href="https://github.com/unisphincs/unisphincs/blob/main/ATTRIBUTION.md">
                 ATTRIBUTION.md
               </a>{" "}
               in the repo.
@@ -213,8 +213,8 @@ export default function Page() {
                 (research paper, included in repo)
               </li>
               <li>
-                <a href="https://github.com/402proto/unisphincs">
-                  402proto/unisphincs
+                <a href="https://github.com/unisphincs/unisphincs">
+                  unisphincs/unisphincs
                 </a>{" "}
                 — this fork
               </li>
@@ -230,10 +230,10 @@ export default function Page() {
 
         <footer>
           <p>
-            unisphincs · cryptography by vbuterin · tooling by 402proto · 2026
+            unisphincs · cryptography by vbuterin · tooling by unisphincs · 2026
           </p>
           <div className="channels">
-            <a href="https://github.com/402proto/unisphincs">github</a>
+            <a href="https://github.com/unisphincs/unisphincs">github</a>
             <a href="https://x.com/UniSphincs">twitter</a>
             <a href="#">telegram (soon)</a>
           </div>

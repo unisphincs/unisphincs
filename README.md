@@ -130,5 +130,5 @@ upstream content (`sphincs_minus.py`, `SphincsMinus.lean`, lean modules, test ve
 ---
 
 <div align="center">
-<sub>unisphincs · cryptography by <a href="https://github.com/vbuterin">vbuterin</a> · tooling by <a href="https://github.com/402proto">402proto</a> · 2026</sub>
+<sub>unisphincs · cryptography by <a href="https://github.com/vbuterin">vbuterin</a> · tooling by <a href="https://github.com/unisphincs">unisphincs</a> · 2026</sub>
 </div>
