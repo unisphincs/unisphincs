@@ -96,7 +96,7 @@ export default function Playground() {
   return (
     <div className="playground">
       <div className="pg-row">
-        <label className="pg-label">message</label>
+        <label className="pg-label">Message to seal</label>
         <input
           type="text"
           className="pg-input"
@@ -106,20 +106,20 @@ export default function Playground() {
             if (state === "signed") setState("tampered");
             else if (state === "tampered" && e.target.value === "") setState("idle");
           }}
-          placeholder="type any message…"
+          placeholder="Type any text…"
           disabled={isInputDisabled}
           maxLength={200}
         />
       </div>
 
       <div className="pg-row">
-        <label className="pg-label">public key (mock)</label>
+        <label className="pg-label">Public key (mock)</label>
         <code className="pg-key">{pubkey || "loading…"}</code>
       </div>
 
       {state === "idle" && (
         <button className="pg-btn pg-btn-primary" onClick={handleSign}>
-          sign with sphincs-
+          Sign with SPHINCS-
         </button>
       )}
 
@@ -130,7 +130,7 @@ export default function Playground() {
       {(state === "signed" || state === "tampered") && (
         <>
           <div className="pg-row">
-            <label className="pg-label">signature · 944 bytes</label>
+            <label className="pg-label">Cryptographic seal · 944 bytes</label>
             <code className="pg-sig">{sigPreview}</code>
           </div>
           <div
@@ -139,31 +139,31 @@ export default function Playground() {
           >
             <span className="pg-dot" />
             {state === "signed"
-              ? "VERIFIED — signature matches the message"
-              : "INVALID — message was tampered, signature no longer matches"}
+              ? "VERIFIED. The seal matches the message."
+              : "INVALID. The message changed. The seal no longer holds."}
           </div>
           <div className="pg-actions">
             {state === "signed" && (
               <button className="pg-btn pg-btn-ghost" onClick={handleTamper}>
-                tamper the message
+                Tamper the message
               </button>
             )}
             <button className="pg-btn pg-btn-ghost" onClick={handleReset}>
-              reset
+              Reset
             </button>
             <button className="pg-btn pg-btn-primary" onClick={handleSign}>
-              re-sign
+              Re-sign
             </button>
           </div>
         </>
       )}
 
       <p className="pg-note">
-        client-side demo. the signature here is a deterministic mock derived
-        from your message via webcrypto sha-256 — believable in size and
-        shape, but the real sphincs- engine runs server-side or in wasm. real
-        signing produces the same shape: a 944-byte hash bundle that proves
-        you knew the private key without revealing it.
+        Client-side demo. The seal shown is a deterministic mock derived
+        from your message via WebCrypto SHA-256, believable in size and shape
+        but not the full SPHINCS- engine, which runs server-side or in WASM
+        in production. Real signing produces the same shape. A 944-byte
+        hash bundle that proves you knew the private key without revealing it.
       </p>
     </div>
   );

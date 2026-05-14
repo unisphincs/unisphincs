@@ -238,6 +238,27 @@ section {
   border: 1px solid rgba(255, 0, 122, 0.25);
 }
 
+.section-tag.try-tag {
+  color: var(--pink-bright);
+  background: rgba(255, 77, 161, 0.15);
+  border-color: rgba(255, 77, 161, 0.45);
+  box-shadow: 0 0 14px rgba(255, 0, 122, 0.25);
+}
+
+.pg-intro {
+  font-size: 1.04rem;
+  line-height: 1.65;
+  color: var(--fg);
+  margin-bottom: 1rem;
+}
+
+.pg-intro-sub {
+  font-size: 0.95rem;
+  color: var(--dim);
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
 h2 {
   font-size: 1.9rem;
   font-weight: 700;
