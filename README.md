@@ -93,21 +93,9 @@ every file marked **upstream** is the work of vitalik buterin and the sphincs- p
 - [ ] gas benchmarks vs ecdsa precompile
 - [ ] eip draft proposal
 - [ ] ethereum wallet integration spec
-- [ ] $unisphincs token launch on ethereum mainnet
 - [ ] security audit of the sdk and verifier
 
 contributions welcome on any line item. open an issue first if it is non-trivial.
-
-## $unisphincs
-
-a token launches on ethereum mainnet to fund continued work — sdk development, audit, ecosystem outreach. the token does not gate access to the cryptography. the cryptography is and will remain free.
-
-| | |
-| - | - |
-| chain | ethereum mainnet |
-| supply | 21,000,000 $UNISPHINCS |
-| contract | tbd — announced at [unisphincs.xyz](https://unisphincs.xyz) |
-| pool | uniswap v4, unisphincs/eth |
 
 ## attribution
 

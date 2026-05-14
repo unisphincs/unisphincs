@@ -33,8 +33,11 @@ export default function Page() {
             toolkit around sphincs-.
           </div>
           <div className="cta-row">
-            <a className="btn btn-primary" href="#token">
-              buy $unisphincs
+            <a className="btn btn-primary" href="https://x.com/UniSphincs">
+              twitter
+            </a>
+            <a className="btn" href="#">
+              telegram
             </a>
             <a className="btn" href="https://github.com/unisphincs/unisphincs">
               github
@@ -140,36 +143,8 @@ export default function Page() {
         </Reveal>
 
         <Reveal>
-          <section id="token">
-            <span className="section-tag">04 · the token</span>
-            <h2>$unisphincs funds the tooling</h2>
-            <p>
-              a <b>$UNISPHINCS</b> token launches on ethereum mainnet to fund
-              continued work: solidity verifier development, security
-              audits, ecosystem integration, and outreach to wallet
-              providers. the token does not gate access to the cryptography.
-              the cryptography is and will remain free.
-            </p>
-
-            <div className="card pink token-card">
-              <div className="label">contract address</div>
-              <div className="ca pending">tbd — announced on this page at launch</div>
-              <div className="label">pool</div>
-              <div className="ca pending">tbd — uniswap v4, unisphincs/eth</div>
-              <div className="label">total supply</div>
-              <div className="ca">21,000,000 $UNISPHINCS</div>
-              <div className="links">
-                <a href="#" aria-disabled>uniswap (pending)</a>
-                <a href="#" aria-disabled>dexscreener (pending)</a>
-                <a href="#" aria-disabled>etherscan (pending)</a>
-              </div>
-            </div>
-          </section>
-        </Reveal>
-
-        <Reveal>
           <section>
-            <span className="section-tag">05 · attribution</span>
+            <span className="section-tag">04 · attribution</span>
             <h2>credit where credit is due</h2>
             <p>
               this repository is a public fork of{" "}
@@ -199,7 +174,7 @@ export default function Page() {
 
         <Reveal>
           <section>
-            <span className="section-tag">06 · references</span>
+            <span className="section-tag">05 · references</span>
             <h2>read the source</h2>
             <ul className="feature-list">
               <li>
