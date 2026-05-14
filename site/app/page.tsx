@@ -2,6 +2,7 @@ import Marquee from "./components/Marquee";
 import Terminal from "./components/Terminal";
 import QuantumEta from "./components/QuantumEta";
 import Reveal from "./components/Reveal";
+import Playground from "./components/Playground";
 import { XIcon, TelegramIcon, GitHubIcon, ForkIcon } from "./components/Icons";
 
 function SphinxMark() {
@@ -28,7 +29,10 @@ export default function Page() {
           <div className="logo-mark">
             <SphinxMark />
           </div>
-          <h1>unisphincs</h1>
+          <h1>
+            <span className="brand-uni">Uni</span>
+            <span className="brand-sphincs">Sphincs</span>
+          </h1>
           <div className="tag">
             post-quantum signatures for the next ethereum. uniswap-ready
             toolkit around sphincs-.
@@ -141,6 +145,9 @@ export default function Page() {
 
             <p>see it sign in real time:</p>
             <Terminal />
+
+            <h3 style={{ marginTop: "2.5rem" }}>or sign your own message →</h3>
+            <Playground />
           </section>
         </Reveal>
 

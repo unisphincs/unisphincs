@@ -81,7 +81,18 @@ header.hero h1 {
   font-weight: 700;
   letter-spacing: -0.04em;
   margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+header.hero h1 .brand-uni {
   background: linear-gradient(180deg, #ffffff 0%, #c3c5cb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+header.hero h1 .brand-sphincs {
+  background: linear-gradient(180deg, #ff4da1 0%, #ff007a 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -773,4 +784,190 @@ footer .channels svg {
 main.page {
   position: relative;
   z-index: 1;
+}
+
+/* ───────── playground ───────── */
+
+.playground {
+  margin: 1.25rem 0 0;
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 0, 122, 0.04) 0%, rgba(0, 0, 0, 0) 100%),
+    var(--bg-elev);
+}
+
+.pg-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.pg-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--dimmer);
+  font-weight: 600;
+}
+
+.pg-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  color: var(--fg);
+  font-family:
+    "Inter", -apple-system, sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.pg-input:focus {
+  outline: none;
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(255, 0, 122, 0.18);
+}
+
+.pg-input:disabled {
+  opacity: 0.6;
+}
+
+.pg-key,
+.pg-sig {
+  display: block;
+  padding: 0.65rem 0.85rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  font-family:
+    "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  color: var(--fg);
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+.pg-sig {
+  color: var(--pink-bright);
+}
+
+.pg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.4rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+
+.pg-btn-primary {
+  background: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
+  box-shadow: 0 0 24px rgba(255, 0, 122, 0.35);
+}
+
+.pg-btn-primary:hover {
+  background: var(--pink-bright);
+  border-color: var(--pink-bright);
+}
+
+.pg-btn-ghost {
+  background: transparent;
+  color: var(--dim);
+  border-color: var(--rule);
+}
+
+.pg-btn-ghost:hover {
+  color: var(--fg);
+  border-color: var(--rule-bright);
+  background: var(--bg);
+}
+
+.pg-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.pg-progress {
+  position: relative;
+  height: 36px;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.pg-progress-bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, var(--pink), var(--pink-bright));
+  transition: width 0.15s ease-out;
+  box-shadow: 0 0 24px rgba(255, 0, 122, 0.4);
+}
+
+.pg-progress-label {
+  position: relative;
+  z-index: 1;
+  font-family:
+    "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  color: #fff;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+.pg-verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  border: 1px solid;
+}
+
+.pg-verdict.ok {
+  background: rgba(118, 209, 145, 0.08);
+  border-color: rgba(118, 209, 145, 0.4);
+  color: var(--success);
+}
+
+.pg-verdict.bad {
+  background: rgba(255, 95, 86, 0.08);
+  border-color: rgba(255, 95, 86, 0.4);
+  color: #ff5f56;
+}
+
+.pg-verdict .pg-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.pg-note {
+  font-size: 0.78rem;
+  color: var(--dimmer);
+  font-style: italic;
+  margin-top: 1.25rem;
+  line-height: 1.55;
 }

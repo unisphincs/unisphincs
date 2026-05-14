@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const TITLE = "unisphincs";
+const TITLE = "UniSphincs";
 const DESCRIPTION =
   "post-quantum signatures for the next ethereum. uniswap-ready toolkit around sphincs-.";
 const SITE_URL = "https://unisphincs.xyz";
