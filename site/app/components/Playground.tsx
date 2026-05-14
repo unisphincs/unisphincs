@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
+import SigComputation from "./SigComputation";
 
 // fast pseudo-random hex string derived deterministically from input.
 // uses webcrypto sha-256 chained 30 times to fill 944 bytes (real sphincs- sig size).
@@ -37,7 +38,7 @@ export default function Playground() {
   const [signature, setSignature] = useState<string>("");
   const [pubkey, setPubkey] = useState<string>("");
   const [state, setState] = useState<"idle" | "signing" | "signed" | "tampered">("idle");
-  const [progress, setProgress] = useState(0);
+  const pendingSigRef = useRef<string>("");
 
   // derive a stable pubkey on mount (looks like the deployer's key)
   useEffect(() => {
@@ -47,21 +48,30 @@ export default function Playground() {
   const handleSign = async () => {
     if (!message.trim()) return;
     setState("signing");
-    setProgress(0);
     setSignature("");
-    // tiny progressive animation, then real (deterministic) signature
-    let pct = 0;
-    const tick = setInterval(() => {
-      pct = Math.min(96, pct + 7 + Math.random() * 6);
-      setProgress(pct);
-    }, 60);
-    const sig = await deriveFakeSig(message, SAMPLE_PRIV);
-    clearInterval(tick);
-    setProgress(100);
-    setTimeout(() => {
-      setSignature(sig);
+    pendingSigRef.current = "";
+    // start the real computation in parallel with the cascade animation
+    deriveFakeSig(message, SAMPLE_PRIV).then((sig) => {
+      pendingSigRef.current = sig;
+    });
+  };
+
+  const handleComputationDone = () => {
+    // by the time the cascade finishes, the sig is almost certainly computed
+    const finish = () => {
+      setSignature(pendingSigRef.current);
       setState("signed");
-    }, 200);
+    };
+    if (pendingSigRef.current) finish();
+    else {
+      // very rare — webcrypto stalled. wait a bit more
+      const id = setInterval(() => {
+        if (pendingSigRef.current) {
+          clearInterval(id);
+          finish();
+        }
+      }, 60);
+    }
   };
 
   const handleTamper = () => {
@@ -72,7 +82,7 @@ export default function Playground() {
   const handleReset = () => {
     setState("idle");
     setSignature("");
-    setProgress(0);
+    pendingSigRef.current = "";
   };
 
   const sigPreview = useMemo(() => {
@@ -114,10 +124,7 @@ export default function Playground() {
       )}
 
       {state === "signing" && (
-        <div className="pg-progress">
-          <div className="pg-progress-bar" style={{ width: `${progress}%` }} />
-          <span className="pg-progress-label">computing 944-byte signature… {Math.round(progress)}%</span>
-        </div>
+        <SigComputation duration={3200} onComplete={handleComputationDone} />
       )}
 
       {(state === "signed" || state === "tampered") && (

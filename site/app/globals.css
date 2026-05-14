@@ -900,36 +900,118 @@ main.page {
   margin-top: 1rem;
 }
 
-.pg-progress {
-  position: relative;
-  height: 36px;
-  background: var(--bg);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ─── cipher cascade (sig computation) ─── */
+
+.sigcomp {
   margin: 0.5rem 0;
+  padding: 1rem 1.1rem;
+  background: #07050d;
+  border: 1px solid rgba(255, 0, 122, 0.22);
+  border-radius: 14px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 0, 122, 0.03),
+    0 0 40px -20px rgba(255, 0, 122, 0.3);
 }
 
-.pg-progress-bar {
-  position: absolute;
-  inset: 0 auto 0 0;
-  background: linear-gradient(90deg, var(--pink), var(--pink-bright));
-  transition: width 0.15s ease-out;
-  box-shadow: 0 0 24px rgba(255, 0, 122, 0.4);
-}
-
-.pg-progress-label {
-  position: relative;
-  z-index: 1;
+.sigcomp-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
   font-family:
     "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.78rem;
+}
+
+.sigcomp-stage {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--pink-bright);
+  letter-spacing: 0.02em;
+}
+
+.sigcomp-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 8px var(--pink);
+  animation: sigPulse 1s ease-in-out infinite;
+}
+
+@keyframes sigPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+.sigcomp-dots {
+  display: inline-flex;
+  gap: 0.1rem;
+  margin-left: 0.1rem;
+}
+
+.sigcomp-dots span {
+  animation: sigDot 1.4s infinite;
+  opacity: 0;
+}
+.sigcomp-dots span:nth-child(1) { animation-delay: 0s; }
+.sigcomp-dots span:nth-child(2) { animation-delay: 0.18s; }
+.sigcomp-dots span:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes sigDot {
+  0%, 60%, 100% { opacity: 0; }
+  20%, 40% { opacity: 1; }
+}
+
+.sigcomp-pct {
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
+}
+
+.sigcomp-grid {
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
+  gap: 1px 2px;
+  font-family:
+    "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  user-select: none;
+  word-break: break-all;
+}
+
+.sigcomp-cell {
+  text-align: center;
+  color: var(--dimmer);
+  transition: color 0.12s, text-shadow 0.12s;
+}
+
+.sigcomp-cell.locked {
+  color: var(--pink-bright);
+  text-shadow: 0 0 4px rgba(255, 77, 161, 0.6);
+}
+
+.sigcomp-cell.cursor {
   color: #fff;
-  letter-spacing: 0.03em;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 8px var(--pink), 0 0 14px var(--pink-bright);
+  animation: cursorFlash 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes cursorFlash {
+  from { opacity: 1; }
+  to { opacity: 0.55; }
+}
+
+.sigcomp-foot {
+  margin-top: 0.75rem;
+  font-family:
+    "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  color: var(--dimmer);
+  letter-spacing: 0.04em;
+  text-align: right;
 }
 
 .pg-verdict {
